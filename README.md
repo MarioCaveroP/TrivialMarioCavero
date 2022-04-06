@@ -42,3 +42,7 @@ El código que sirve para pasar al siguiente jugador está repetido muchas veces
 
 ## Problema 6 
 Simplifica la función “respuestaCorrecta” extrayendo código duplicado.
+
+## Problema 7
+Para poder crear preguntas infinitas cambiaremos el metodo hacerPregunta para que cuando 
+se haga una pregunta, esta vuelva a poder salir.

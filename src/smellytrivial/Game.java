@@ -17,11 +17,11 @@ public class Game {
     int jugadorActual = 0;
     boolean estaSaliendoDeLaCarcel;
 
-    public  Game(){
+    public Game() {
         crearPreguntas();
     }
 
-    private void crearPreguntas(){
+    private void crearPreguntas() {
         for (int i = 0; i < 50; i++) {
             preguntasCultura.addLast("Pregunta de Cultura " + i);
             preguntasCiencias.addLast(("Pregunta de Ciencias " + i));
@@ -35,23 +35,28 @@ public class Game {
         agregar(nombreJugador2);
         crearPreguntas();
     }
-    public Game(String nombreJugador1, String nombreJugador2, String nombreJugador3){
+
+    public Game(String nombreJugador1, String nombreJugador2, String nombreJugador3) {
         this(nombreJugador1, nombreJugador2);
         agregar(nombreJugador3);
     }
-    public Game(String nombreJugador1, String nombreJugador2, String nombreJugador3,String nombreJugador4){
+
+    public Game(String nombreJugador1, String nombreJugador2, String nombreJugador3, String nombreJugador4) {
         this(nombreJugador1, nombreJugador2, nombreJugador3);
         agregar(nombreJugador4);
     }
-    public Game(String nombreJugador1, String nombreJugador2, String nombreJugador3,String nombreJugador4, String nombreJugador5){
+
+    public Game(String nombreJugador1, String nombreJugador2, String nombreJugador3, String nombreJugador4, String nombreJugador5) {
         this(nombreJugador1, nombreJugador2, nombreJugador3, nombreJugador4);
         agregar(nombreJugador5);
     }
-    public Game(String nombreJugador1, String nombreJugador2, String nombreJugador3,String nombreJugador4, String nombreJugador5, String nombreJugador6){
+
+    public Game(String nombreJugador1, String nombreJugador2, String nombreJugador3, String nombreJugador4, String nombreJugador5, String nombreJugador6) {
         this(nombreJugador1, nombreJugador2, nombreJugador3, nombreJugador4, nombreJugador5);
         agregar(nombreJugador6);
     }
-    public String crearPreguntaMusica(int index){
+
+    public String crearPreguntaMusica(int index) {
         return "Pregunta de Música " + index;
     }
 
@@ -63,9 +68,9 @@ public class Game {
 
 
         jugadores.add(playerName);
-        posiciones[cuantosJugadores()-1] = 0;
-        monederos[cuantosJugadores()-1] = 0;
-        enCasillaCastigo[cuantosJugadores()-1] = false;
+        posiciones[cuantosJugadores() - 1] = 0;
+        monederos[cuantosJugadores() - 1] = 0;
+        enCasillaCastigo[cuantosJugadores() - 1] = false;
 
         System.out.println(playerName + " se ha unido a la partida");
         System.out.println("Es el jugador número " + jugadores.size());
@@ -114,14 +119,26 @@ public class Game {
     }
 
     private void hacerPregunta() {
-        if (categoriaActual() == "Cultura popular")
-            System.out.println(preguntasCultura.removeFirst());
-        if (categoriaActual() == "Ciencias")
-            System.out.println(preguntasCiencias.removeFirst());
-        if (categoriaActual() == "Deportes")
-            System.out.println(preguntasDeportes.removeFirst());
-        if (categoriaActual() == "Música")
-            System.out.println(preguntasMusica.removeFirst());
+        if (categoriaActual() == "Cultura popular") {
+            Object pregunta = preguntasCultura.removeFirst();
+            System.out.println(pregunta);
+            preguntasCultura.addLast(pregunta);
+        }
+        if (categoriaActual() == "Ciencias") {
+            Object pregunta = preguntasCiencias.removeFirst();
+            System.out.println(pregunta);
+            preguntasCiencias.addLast(pregunta);
+        }
+        if (categoriaActual() == "Deportes") {
+            Object pregunta = preguntasDeportes.removeFirst();
+            System.out.println(pregunta);
+            preguntasDeportes.addLast(pregunta);
+        }
+        if (categoriaActual() == "Musica") {
+            Object pregunta = preguntasMusica.removeFirst();
+            System.out.println(pregunta);
+            preguntasMusica.addLast(pregunta);
+        }
     }
 
 
@@ -139,19 +156,19 @@ public class Game {
     }
 
     public boolean respuestaCorrecta() {
-        if (enCasillaCastigo[jugadorActual]){
+        if (enCasillaCastigo[jugadorActual]) {
             if (estaSaliendoDeLaCarcel) {
                 return acertarPregunta();
             } else {
                 siguienteTurno();
                 return false;
             }
-        }else {
+        } else {
             return acertarPregunta();
         }
     }
 
-    private boolean acertarPregunta(){
+    private boolean acertarPregunta() {
         System.out.println("Respuesta correcta!!!!");
         monederos[jugadorActual]++;
         System.out.println(jugadores.get(jugadorActual)
@@ -163,14 +180,15 @@ public class Game {
         siguienteTurno();
         return ganador;
     }
+
     private void siguienteTurno() {
         jugadorActual++;
         if (jugadorActual == jugadores.size()) jugadorActual = 0;
     }
 
-    public boolean respuestaIncorrecta(){
+    public boolean respuestaIncorrecta() {
         System.out.println("Respuesta incorrecta");
-        System.out.println(jugadores.get(jugadorActual)+ " va a la casilla de castigo");
+        System.out.println(jugadores.get(jugadorActual) + " va a la casilla de castigo");
         enCasillaCastigo[jugadorActual] = true;
 
         siguienteTurno();
@@ -192,5 +210,9 @@ public class Game {
     public boolean estaEnCarcel(String nombreJugador) {
         int indiceJugador = jugadores.indexOf(nombreJugador);
         return enCasillaCastigo[indiceJugador];
+    }
+
+    public LinkedList getPreguntasCiencias() {
+        return preguntasCiencias;
     }
 }

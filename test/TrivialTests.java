@@ -5,7 +5,7 @@ import smellytrivial.Game;
 public class TrivialTests {
     @Test
     public void true_is_true(){
-        Assertions.assertTrue(false);
+        Assertions.assertTrue(true);
     }
     @Test
     public void crear_Game(){
@@ -187,5 +187,17 @@ public class TrivialTests {
         boolean esGanador = sut.respuestaCorrecta();
 
         Assertions.assertTrue(esGanador);
+    }
+    @Test
+    public void las_preguntas_vuelven_al_mazo () throws Exception{
+        Game sut = new Game("Maria", "Juan");
+
+        String expected = (String) sut.getPreguntasCiencias().getFirst();
+        sut.tirarDado(1);
+        sut.respuestaCorrecta();
+
+        String actual = (String) sut.getPreguntasCiencias().getLast();
+
+        Assertions.assertEquals(expected, actual);
     }
 }
