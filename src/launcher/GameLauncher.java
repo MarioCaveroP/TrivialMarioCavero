@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class GameLauncher {
 
-    private static boolean noGanador;
+    private static boolean Ganador = true;
 
     public static void main(String[] args) throws Exception {
         Game juego = new Game();
@@ -23,14 +23,14 @@ public class GameLauncher {
             juego.tirarDado(rand.nextInt(5) + 1);
 
             if (rand.nextInt(9) == 7) {
-                noGanador = juego.respuestaIncorrecta();
+                Ganador = juego.respuestaIncorrecta();
             } else {
-                noGanador = juego.fueRespuestaCorrecta();
+                Ganador = juego.respuestaCorrecta();
             }
 
 
 
-        } while (noGanador);
+        } while (!Ganador);
 
     }
 }

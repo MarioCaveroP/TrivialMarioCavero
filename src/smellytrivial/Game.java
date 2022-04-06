@@ -138,7 +138,7 @@ public class Game {
         return "Música";
     }
 
-    public boolean fueRespuestaCorrecta() {
+    public boolean respuestaCorrecta() {
         if (enCasillaCastigo[jugadorActual]){
             if (estaSaliendoDeLaCarcel) {
                 System.out.println("Respuesta correcta!!!!");
@@ -156,7 +156,7 @@ public class Game {
             } else {
                 jugadorActual++;
                 if (jugadorActual == jugadores.size()) jugadorActual = 0;
-                return true;
+                return false;
             }
 
 
@@ -185,12 +185,12 @@ public class Game {
 
         jugadorActual++;
         if (jugadorActual == jugadores.size()) jugadorActual = 0;
-        return true;
+        return false;
     }
 
 
     private boolean jugadorHaGanado() {
-        return !(monederos[jugadorActual] == 6);
+        return (monederos[jugadorActual] == 6);
     }
 
     public String nuevaPosicionJugador() {

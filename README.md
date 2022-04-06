@@ -25,8 +25,13 @@ Lo hacemos con TDD
 
 ##Ejercicio 3
 
-Un jugador va a la cárcel cuando falla una pregunta.
-Vamos a verificarlo con un test.
+Existia un problema al salir de la carcel. Aunque se indicaba que el jugador estaba "saliendo
+de la carcel" en realidad nunca se establecia enCasillaCastigo[[jugadorActual]] = false
+Lo corregimos en el caso de sacar un numero impar.
+Verificamos el resultado con tests
 
-No tenemos ningún método que nos indique si dado un jugador, éste está en la cárcel, así que vamos a crear
-mediante TDD
+## Problema 4
+
+Los nombres y contenidos de variables y funciones que indican si un jugador ha ganado
+estan incorrecto o retorcidos. Arreglamos el "naming" e invertimos la logica para que se entienda
+Verificamos con test.
