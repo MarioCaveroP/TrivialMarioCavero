@@ -22,3 +22,11 @@ Esto nos obliga por diseño a tener un número correcto de jugadores, y además 
 excepciones el flujo de la ejecución, lo cual se considera un anti-patrón.
 
 Lo hacemos con TDD
+
+##Ejercicio 3
+
+Un jugador va a la cárcel cuando falla una pregunta.
+Vamos a verificarlo con un test.
+
+No tenemos ningún método que nos indique si dado un jugador, éste está en la cárcel, así que vamos a crear
+mediante TDD
