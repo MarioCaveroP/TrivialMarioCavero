@@ -35,3 +35,7 @@ Verificamos el resultado con tests
 Los nombres y contenidos de variables y funciones que indican si un jugador ha ganado
 estan incorrecto o retorcidos. Arreglamos el "naming" e invertimos la logica para que se entienda
 Verificamos con test.
+
+## Problema 5
+
+El código que sirve para pasar al siguiente jugador está repetido muchas veces. Extráelo a un método común.
