@@ -39,3 +39,6 @@ Verificamos con test.
 ## Problema 5
 
 El código que sirve para pasar al siguiente jugador está repetido muchas veces. Extráelo a un método común.
+
+## Problema 6 
+Simplifica la función “respuestaCorrecta” extrayendo código duplicado.
