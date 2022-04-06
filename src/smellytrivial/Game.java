@@ -51,7 +51,11 @@ public class Game {
         return jugadores.size();
     }
 
-    public void tirarDado(int puntosDado) {
+    public void tirarDado(int puntosDado) throws Exception {
+        if (!esJugable()) {
+            throw new Exception("Debe haber al menos 2 jugadores");
+        }
+
         System.out.println(jugadores.get(jugadorActual) + " es el jugador actual");
         System.out.println("Ha sacado un " + puntosDado);
 

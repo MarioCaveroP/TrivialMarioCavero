@@ -7,12 +7,11 @@ public class TrivialTests {
     public void true_is_true(){
         Assertions.assertTrue(false);
     }
-
     @Test
     public void crear_Game(){
         Game trivial = new Game();
     }
-    @Test void si_al_principio_saco_un_1_voy_a_casilla_1(){
+    @Test void si_al_principio_saco_un_1_voy_a_casilla_1() throws Exception {
         Game sut = new Game();
         sut.agregar("Maria");
         sut.agregar("Juan");
@@ -24,5 +23,34 @@ public class TrivialTests {
         String actual = sut.nuevaPosicionJugador();
 
         Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void partida_con_un_jugador_no_es_jugable(){
+        Game sut = new Game();
+        sut.agregar("Maria");
+
+        boolean actual = sut.esJugable();
+
+        Assertions.assertEquals(false, actual);
+    }
+    @Test
+    public void partida_con_dos_jugadores_si_es_jugable(){
+        Game sut = new Game();
+        sut.agregar("Maria");
+        sut.agregar("Juan");
+
+        boolean actual = sut.esJugable();
+
+        Assertions.assertEquals(true, actual);
+    }
+    @Test
+    public void partida_con_un_jugador_no_puede_tirar_dado() throws Exception{
+        Game sut = new Game();
+        sut.agregar("Maria");
+
+        Assertions.assertThrows(
+                Exception.class,
+                ()-> sut.tirarDado(1),
+                "Debe haber al menos 2 jugadores");
     }
 }
