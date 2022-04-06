@@ -53,4 +53,44 @@ public class TrivialTests {
                 ()-> sut.tirarDado(1),
                 "Debe haber al menos 2 jugadores");
     }
+    @Test
+    public void crear_partida_con_dos_jugadores_es_jugable(){
+        Game sut = new Game("Maria", "Juan");
+
+        boolean actual = sut.esJugable();
+
+        Assertions.assertEquals(true, actual);
+    }
+    @Test
+    public void crear_partida_con_tres_jugadores_es_jugable(){
+        Game sut = new Game("Maria", "Juan", "Pepe");
+
+        boolean actual = sut.esJugable();
+
+        Assertions.assertEquals(true, actual);
+    }
+    @Test
+    public void crear_partida_con_cuatro_jugadores_es_jugable(){
+        Game sut = new Game("Maria", "Juan","Pepe", "Luis");
+
+        boolean actual = sut.esJugable();
+
+        Assertions.assertEquals(true, actual);
+    }
+    @Test
+    public void crear_partida_con_cinco_jugadores_es_jugable(){
+        Game sut = new Game("Maria", "Juan", "Pepe", "Luis", "Jose");
+
+        boolean actual = sut.esJugable();
+
+        Assertions.assertEquals(true, actual);
+    }
+    @Test
+    public void crear_partida_con_seis_jugadores_es_jugable(){
+        Game sut = new Game("Maria", "Juan", "Pepe", "Luis", "Jose", "Carla");
+
+        boolean actual = sut.esJugable();
+
+        Assertions.assertEquals(true, actual);
+    }
 }

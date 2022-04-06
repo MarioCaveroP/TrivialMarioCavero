@@ -18,6 +18,10 @@ public class Game {
     boolean estaSaliendoDeLaCarcel;
 
     public  Game(){
+        crearPreguntas();
+    }
+
+    private void crearPreguntas(){
         for (int i = 0; i < 50; i++) {
             preguntasCultura.addLast("Pregunta de Cultura " + i);
             preguntasCiencias.addLast(("Pregunta de Ciencias " + i));
@@ -26,6 +30,27 @@ public class Game {
         }
     }
 
+    public Game(String nombreJugador1, String nombreJugador2) {
+        agregar(nombreJugador1);
+        agregar(nombreJugador2);
+        crearPreguntas();
+    }
+    public Game(String nombreJugador1, String nombreJugador2, String nombreJugador3){
+        this(nombreJugador1, nombreJugador2);
+        agregar(nombreJugador3);
+    }
+    public Game(String nombreJugador1, String nombreJugador2, String nombreJugador3,String nombreJugador4){
+        this(nombreJugador1, nombreJugador2, nombreJugador3);
+        agregar(nombreJugador4);
+    }
+    public Game(String nombreJugador1, String nombreJugador2, String nombreJugador3,String nombreJugador4, String nombreJugador5){
+        this(nombreJugador1, nombreJugador2, nombreJugador3, nombreJugador4);
+        agregar(nombreJugador5);
+    }
+    public Game(String nombreJugador1, String nombreJugador2, String nombreJugador3,String nombreJugador4, String nombreJugador5, String nombreJugador6){
+        this(nombreJugador1, nombreJugador2, nombreJugador3, nombreJugador4, nombreJugador5);
+        agregar(nombreJugador6);
+    }
     public String crearPreguntaMusica(int index){
         return "Pregunta de Música " + index;
     }
@@ -38,9 +63,9 @@ public class Game {
 
 
         jugadores.add(playerName);
-        posiciones[cuantosJugadores()] = 0;
-        monederos[cuantosJugadores()] = 0;
-        enCasillaCastigo[cuantosJugadores()] = false;
+        posiciones[cuantosJugadores()-1] = 0;
+        monederos[cuantosJugadores()-1] = 0;
+        enCasillaCastigo[cuantosJugadores()-1] = false;
 
         System.out.println(playerName + " se ha unido a la partida");
         System.out.println("Es el jugador número " + jugadores.size());
